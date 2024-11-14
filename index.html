@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Petsmart RX Card Generator</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #output {
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        function update(){
+            var c = document.getElementById("output");
+            var ctx = c.getContext("2d");
+            ctx.clearRect(0, 0, 700, 400); 
+
+            ctx.fillStyle = '#eee';
+            ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+
+            ctx.fillStyle = "#000";
+    
+
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('cust_name').value, 5, 20);
+            ctx.font = "14px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('cust_addr').value, (5 + document.getElementById('cust_name').value.length*12), 20);
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('pet_name').value + " ("+
+                document.getElementById('pet_species').value + ")", 5, 70);
+            ctx.font = "18px Andale Mono, monospace";
+                ctx.fillText(document.getElementById('rxfood1').value, 5, 100);
+            ctx.fillText(document.getElementById('rxfood2').value, 5, 130);
+            ctx.fillText(document.getElementById('rxfood3').value, 5, 160);
+            ctx.font = "14px Andale Mono, monospace";
+            ctx.fillText("RX", 5, 250);
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('rx').value, 25, 250);
+            ctx.font = "14px Andale Mono, monospace";
+            ctx.fillText("QTY", 5, 280);
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('qty').value, 35, 280);
+            ctx.font = "14px Andale Mono, monospace";
+            ctx.fillText("RX DATE", 75, 280);
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('date').value, 145, 280);
+
+            ctx.font = "14px Andale Mono, monospace";
+            ctx.fillText("USE BEFORE", 500, 250);
+            ctx.font = "Bold 18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('before').value, 
+            (690-(document.getElementById('before').value.length*11)),
+             250);
+            ctx.fillText(document.getElementById('dr').value, 
+            (690-(document.getElementById('dr').value.length*11))
+            , 280);
+            ctx.fillText(document.getElementById('dr2').value, 
+            (690-(document.getElementById('dr2').value.length*11))
+            , 310);
+            ctx.fillText(document.getElementById('vet').value, 5, 330);
+            ctx.fillText(document.getElementById('phone').value, 5 +
+            (document.getElementById('vet').value.length*12)
+            , 330);
+            ctx.font = "18px Andale Mono, monospace";
+            ctx.fillText(document.getElementById('address').value, 5, 360);
+
+
+
+
+            ctx.font = "Italic 12px Andale Mono, monospace";
+            ctx.fillText("Veterinary use only. Please keep out of reach of children and pets.", 5, 390);
+
+
+            // ctx.rect(0, 0, 700, 400);
+            // ctx.fill();
+        }
+    </script>
+</head>
+<body>
+    <label for="cust_name">Customer Name</label>
+    <input type="text" id="cust_name">
+    <br/>
+    <label for="cust_addr">Customer Address</label>
+    <input type="text" id="cust_addr">
+    <br/>
+    <label for="pet_name">Pet Name</label>
+    <input type="text" id="pet_name">
+    <br/>
+    <label for="pet_species">Pet Species</label>
+    <select id="pet_species">
+        <option value="Canine">Canine</option>
+        <option value="Feline">Feline</option>
+    </select>
+    <br/>
+    <label for="rxfood1">Perscription 1</label>
+    <input type="text" id="rxfood1">
+    <br/>
+    <label for="rxfood2">Perscription 2</label>
+    <input type="text" id="rxfood2">
+    <br/>
+    <label for="rxfood3">Perscription 2</label>
+    <input type="text" id="rxfood3">
+    <br/>
+    <label for="rx">RX #</label>
+    <input type="text" id="rx">
+    <label for="qty">QTY</label>
+    <input type="text" id="qty">
+    <label for="date">RX Date</label>
+    <input type="text" id="date">
+    <br/>
+    <label for="before">Use Before</label>
+    <input type="text" id="before">
+
+
+    <br/>
+    <label for="vet">Veterinarian</label>
+    <input type="text" id="vet">
+    <label for="phone">Phone</label>
+    <input type="text" id="phone">
+    <br/>
+    <label for="address">Address</label>
+    <input type="text" id="address">
+    <br/>
+    <label for="dr">Doctor</label>
+    <input type="text" id="dr">
+    <br/>
+    <label for="dr2">Doctor2</label>
+    <input type="text" id="dr2">
+    <br/>
+
+    <button onclick="update();">Update</button>
+
+    <hr/>
+
+    <canvas id="output" width="700px" height="400px"></canvas>
+</body>
+</html>
